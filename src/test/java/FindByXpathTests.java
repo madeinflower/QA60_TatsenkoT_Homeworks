@@ -8,8 +8,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class FindByCssSelectorsTests {
-
+public class FindByXpathTests {
     WebDriver driver;
 
     @BeforeMethod
@@ -26,36 +25,42 @@ public class FindByCssSelectorsTests {
     }
 
     @Test
-    public void findElementsByCssSelectors(){
-        WebElement element = driver.findElement(By.cssSelector("img[alt='Tricentis Demo Web Shop']"));
+    public void findElementsByXpath(){
+
+        WebElement element = driver.findElement(By.xpath("//img[@alt='Tricentis Demo Web Shop']"));
         System.out.println("Logo size: " + element.getSize());
 
-        WebElement element1 = driver.findElement(By.cssSelector("input[value=\"Search\"]"));
+        WebElement element1 = driver.findElement(By.xpath("//input[@value='Search']"));
         System.out.println("Search button size: " + element1.getSize());
 
-        WebElement element2 = driver.findElement(By.cssSelector(".ico-register"));
+        WebElement element2 = driver.findElement(By.xpath("//a[normalize-space()='Register']"));
         System.out.println("Register link size: " + element2.getSize());
 
-        WebElement element3 = driver.findElement(By.cssSelector(".ico-login"));
+        WebElement element3 = driver.findElement(By.xpath("//a[normalize-space()='Log in']"));
         System.out.println("Login link size: " + element3.getSize());
 
-        WebElement element4 = driver.findElement(By.cssSelector("a[class='ico-cart'] span[class='cart-label']"));
+        WebElement element4 = driver.findElement(By.xpath("//span[normalize-space()='Shopping cart']"));
         System.out.println("Shopping cart link size: " + element4.getSize());
 
-        WebElement element5 = driver.findElement(By.cssSelector("a[class='ico-wishlist'] span[class='cart-label']"));
+        WebElement element5 = driver.findElement(By.xpath("//span[normalize-space()='Wishlist']"));
         System.out.println("Wishlist link size: " + element5.getSize());
 
-        WebElement element6 = driver.findElement(By.cssSelector("#small-searchterms"));
+        WebElement element6 = driver.findElement(By.xpath("//input[@id='small-searchterms']"));
         System.out.println("Search input field size: " + element6.getSize());
 
-        WebElement element7 = driver.findElement(By.cssSelector("#newsletter-subscribe-button"));
+        WebElement element7 = driver.findElement(By.xpath("//input[@id='newsletter-subscribe-button']"));
         System.out.println("Subscribe button size: " + element7.getSize());
 
-        WebElement element8 = driver.findElement(By.cssSelector("#newsletter-email"));
+        WebElement element8 = driver.findElement(By.xpath("//input[@id='newsletter-email']"));
         System.out.println("Newsletter input field size: " + element8.getSize());
 
-        WebElement element9 = driver.findElement(By.cssSelector("div[class='block block-category-navigation'] strong"));
+        WebElement element9 = driver.findElement(By.xpath("//strong[normalize-space()='Categories']"));
         System.out.println("Categories title size: " + element9.getSize());
+
+
+
+
+
 
     }
 }
