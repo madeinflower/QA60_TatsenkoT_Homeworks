@@ -5,6 +5,9 @@ public class AddItemToCartTests extends TestBase{
 
     @Test
     public void addItemToCartPositiveTest(){
+        click(By.xpath("//a[normalize-space()='Log in']"));
+        fillLoginForm("tatsenko.tetiana@gmail.com", "1234567890");
+        clickOnLoginButton();
         click(By.linkText("14.1-inch Laptop"));
         click(By.id("add-to-cart-button-31"));
         click(By.xpath("//span[normalize-space()='Shopping cart']"));
