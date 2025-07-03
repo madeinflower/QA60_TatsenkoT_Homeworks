@@ -1,14 +1,15 @@
-import org.openqa.selenium.By;
+import com.demowebshop.models.UserLogin;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
 
     @Test
     public void loginPositiveTest(){
-        click(By.xpath("//a[normalize-space()='Log in']"));
-        assertElementPresent(By.xpath("//strong[normalize-space()='Returning Customer']"), "Returning Customer");
-        fillLoginForm("tatsenko.tetiana@gmail.com", "1234567890");
-        clickOnLoginButton();
-        assertElementPresent(By.xpath("//a[normalize-space()='Log out']"), "Logout not found");
+        app.getUserLogin().clickOnLoginLink();
+        app.getUserLogin().isReturningCustomerElPresent();
+        app.getUserLogin().fillLoginForm(new UserLogin().setEmail("ann.tatsenko@gmail.com")
+                .setPassword("1234567890"));
+        app.getUserLogin().clickOnLoginButton();
+        app.getUserLogin().isLogOutButtonPresent();
     }
 }

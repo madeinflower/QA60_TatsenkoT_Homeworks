@@ -1,18 +1,25 @@
+import com.demowebshop.models.UserReg;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests extends TestBase {
 
     @Test
     public void newUserRegistrationPositiveTest() {
-        clickOnRegisterButton();
-        assertElementPresent(By.xpath("//h1[normalize-space()='Register']"), "Register page not shown");
-        String email = generateRandomEmail();
-        fillRegistrationForm("Tetiana", "Tatsenkot", email, "1234567890");
-        click(By.id("register-button"));
-        assertElementPresent(By.xpath("//div[contains(text(),'Your registration completed')]"), "No success message");
-        assertElementPresent(By.xpath("//input[@value='Continue']"), "No Continue button");
-        click(By.xpath("//input[@value='Continue']"));
-        assertElementPresent(By.xpath("//a[normalize-space()='Log out']"), "Logout not found");
+        //int i=(int)((System.currentTimeMillis()/1000)%3600);
+
+        app.getUserReg().clickOnRegisterUpperButton();
+        app.getUserReg().isRegisterTitlePresent();
+        app.getUserReg().fillRegistrationForm(new UserReg().setFirstName("Ann")
+                        .setLastName("Tatsenko")
+                        .setEmail("ann.tatsenko@gmail.com")
+                        .setPassword("1234567890")
+                        .setConfirmPassword("1234567890"));
+        app.getUserReg().clickOnRegisterButton();
+        app.getUserReg().isRegistrationCompleted();
+        app.getUserReg().isContinueButtonPresent();
+        app.getUserReg().clickOnContinueButton();
+        app.getUserLogin().isLogOutButtonPresent();
     }
 }
